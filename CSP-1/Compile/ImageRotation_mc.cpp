@@ -21,9 +21,9 @@ int main(){
 
 	cout << "Enter the Width of the Image: ";
 	cin >> width;
-	cout << "\nEnter the Height of the Image: ";
+	cout << "Enter the Height of the Image: ";
 	cin >> height;
-	cout << "\nEnter the Angle of Rotation: ";
+	cout << "Enter the Angle of Rotation: ";
 	cin >> angle;
 
 	float Cx0 = 0;
@@ -55,14 +55,17 @@ int main(){
 	tmpx3 = Dx3;
 	tmpy3 = Dy3;
 
-	Dx0 = tmpx0*cos((tmpy0*M_PI/180.0)+angle);
-	Dy0 = tmpx0*sin((tmpy0*M_PI/180.0)+angle);
-	Dx1 = tmpx1*cos((tmpy1*M_PI/180.0)+angle);
-	Dy1 = tmpx1*sin((tmpy1*M_PI/180.0)+angle);
-	Dx2 = tmpx2*cos((tmpy2*M_PI/180.0)+angle);
-	Dy2 = tmpx2*sin((tmpy2*M_PI/180.0)+angle);
-	Dx3 = tmpx3*cos((tmpy3*M_PI/180.0)+angle);
-	Dy3 = tmpx3*sin((tmpy3*M_PI/180.0)+angle);
+
+	//V-this is the problem area. somehow the conversion goes wrong here
+
+//	Dx0 = tmpx0*cos((tmpy0*M_PI/180.0)+angle);
+//	Dy0 = tmpx0*sin((tmpy0*M_PI/180.0)+angle);
+//	Dx1 = tmpx1*cos((tmpy1*M_PI/180.0)+angle);
+//	Dy1 = tmpx1*sin((tmpy1*M_PI/180.0)+angle);
+//	Dx2 = tmpx2*cos((tmpy2*M_PI/180.0)+angle);
+//	Dy2 = tmpx2*sin((tmpy2*M_PI/180.0)+angle);
+//	Dx3 = tmpx3*cos((tmpy3*M_PI/180.0)+angle);
+//	Dy3 = tmpx3*sin((tmpy3*M_PI/180.0)+angle);
 
 	cout << fixed << setprecision(2) << "\n\nC0(" << Cx0 << ", " << Cy0 << ") --> D0(" << Dx0 << ", " << Dy0 << ")";
 	cout << "\nC1(" << Cx1 << ", " << Cy1 << ") --> D1(" << Dx1 << ", " << Dy1 << ")";
