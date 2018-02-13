@@ -21,6 +21,8 @@ int main(){
 //	cout << "Enter the increment between metric values: ";
 //	cin >> increment;
 //	float setmeter=meter;
+//	if(number>10)
+//		number=10;
 //	while(meter<=setmeter+(number*increment)){
 //		feet=meter*3.281;
 //		cout << meter << " meters = " << feet << " feet" << endl;
