@@ -16,6 +16,7 @@ using namespace std;
 
 int main(){
 	float T,r,F,theta;
+
 }
 
 
