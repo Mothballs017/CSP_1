@@ -35,3 +35,4 @@ int main(void){
 	cout << fixed << setprecision(2) << sumgrade/numgrades << endl;
 	return(0);
 }
+/*********************************************************************************/
