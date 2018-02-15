@@ -3,7 +3,7 @@
 /*** Course: Computational Problem Solving CPET-121 						   ***/
 /*** Developer: Matthew Chu 												   ***/
 /*** Data: Feb 15, 2018														   ***/
-/*** Description: Averange Test Results per Experiment						   ***/
+/*** Description: Interest for the Price of Manhattan						   ***/
 /*********************************************************************************/
 
 #include <iostream>
@@ -23,3 +23,4 @@ int main(void){
 	}
 	return(0);
 }
+/*********************************************************************************/
