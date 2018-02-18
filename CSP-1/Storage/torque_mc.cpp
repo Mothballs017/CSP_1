@@ -3,7 +3,7 @@
 /*** Course: Computational Problem Solving CPET-121							   ***/
 /*** Developer: Matthew Chu													   ***/
 /*** Data: Feb 15, 2018                                                        ***/
-/*** Description: Calculating torque							               ***/
+/*** Description: Calculating Torque							               ***/
 /*********************************************************************************/
 
 #include <iostream>
@@ -14,19 +14,19 @@
 
 using namespace std;
 
-void Torque(double, double, double);
+void Torque(double&, double&, double&);
 
 int main(){
-	double r=20; //m or ft
-	double F=40; //N or lbf
-	double theta=63; //radians
-	double T;
-	cout <<
+	double T=40; //m or ft
+	double F=16; //N or lbf
+	double theta=293; //radians
+	Torque(T,F,theta);
+	cout << T << endl;
 	return(0);
 }
 
-void Torque(double dist, double force, double angle){
+void Torque(double& dist, double& force, double& angle){
 	angle=angle*(M_PI/180);
-	T=dist*force*sin(angle);
-	return T;
+	dist=dist*force*sin(angle);
 }
+/*********************************************************************************/
