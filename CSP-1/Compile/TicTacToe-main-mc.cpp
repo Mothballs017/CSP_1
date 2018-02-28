@@ -42,6 +42,7 @@ int main(){
 			"\nBelow you will indicate your position (1-9) as shown in the table.\n" << endl;
 	Marker();
 	First();
+	cout << "\n\n" << right << setw(16) << "Tic Tac Toe\n" << endl;
 	Draw();
 	do{
 		InputCheck();
@@ -52,11 +53,15 @@ int main(){
 		Draw();
 		gameOver=CheckWinner();
 	}while(gameOver!=true);
-	Draw();
-	if(winner==user)
+	if(winner==user){
+		Draw();
 		cout << "Player 1 wins the game!" << endl;
+	}
 	if(winner==comp)
 		cout << "Computer wins the game!" << endl;
-	if(winner=='t')
+	if(winner=='t'){
+		Draw();
+		cout << "Draw" << endl;
+	}
 	return (0);
 }

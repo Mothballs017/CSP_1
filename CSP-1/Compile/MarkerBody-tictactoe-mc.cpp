@@ -20,14 +20,14 @@ void Marker(){
 		cout << "But first, would you like to be X? or O?\n";
 		cin >> choice;
 		if(choice==user || choice=='x'){
-			cout << "Player is X  |  Computer is O" << endl;
+			cout << "Player is X  |  Computer is O\n" << endl;
 			break;
 		}
 		if(choice==comp || choice=='o'){
 			char tmp=comp;
 			comp=user;
 			user=tmp;
-			cout << "Player is O  | Computer is X" << endl;
+			cout << "Player is O  | Computer is X\n" << endl;
 			validChoice=true;
 		}
 	}

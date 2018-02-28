@@ -22,6 +22,8 @@ bool Available(int spot, char player){
 			return unavailable;
 		}
 		else{
+			if(player==comp)
+				cout << "Computer chose position " << pos1 << endl;
 			pos1=player;
 			return !unavailable;
 		}
@@ -33,6 +35,8 @@ bool Available(int spot, char player){
 			return unavailable;
 		}
 		else{
+			if(player==comp)
+				cout << "Computer chose position " << pos2 << endl;
 			pos2=player;
 			return !unavailable;
 		}
@@ -44,6 +48,8 @@ bool Available(int spot, char player){
 			return unavailable;
 		}
 		else{
+			if(player==comp)
+				cout << "Computer chose position " << pos3 << endl;
 			pos3=player;
 			return !unavailable;
 		}
@@ -55,6 +61,8 @@ bool Available(int spot, char player){
 			return unavailable;
 		}
 		else{
+			if(player==comp)
+				cout << "Computer chose position " << pos4 << endl;
 			pos4=player;
 			return !unavailable;
 		}
@@ -66,6 +74,8 @@ bool Available(int spot, char player){
 			return unavailable;
 		}
 		else{
+			if(player==comp)
+				cout << "Computer chose position " << pos5 << endl;
 			pos5=player;
 			return !unavailable;
 		}
@@ -77,6 +87,8 @@ bool Available(int spot, char player){
 			return unavailable;
 		}
 		else{
+			if(player==comp)
+				cout << "Computer chose position " << pos6 << endl;
 			pos6=player;
 			return !unavailable;
 		}
@@ -88,6 +100,8 @@ bool Available(int spot, char player){
 			return unavailable;
 		}
 		else{
+			if(player==comp)
+				cout << "Computer chose position " << pos7 << endl;
 			pos7=player;
 			return !unavailable;
 		}
@@ -99,6 +113,8 @@ bool Available(int spot, char player){
 			return unavailable;
 		}
 		else{
+			if(player==comp)
+				cout << "Computer chose position " << pos8 << endl;
 			pos8=player;
 			return !unavailable;
 		}
@@ -110,6 +126,8 @@ bool Available(int spot, char player){
 			return unavailable;
 		}
 		else{
+			if(player==comp)
+				cout << "Computer chose position " << pos9 << endl;
 			pos9=player;
 			return !unavailable;
 		}

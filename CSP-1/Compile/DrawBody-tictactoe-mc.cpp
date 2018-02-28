@@ -13,8 +13,7 @@
 using namespace std;
 
 void Draw(){
-	cout << "\n\n" << right << setw(16) << "Tic Tac Toe\n" << endl;
-	cout << left << "User (X)  -  Computer (O)\n\n" << endl;
+	cout << left << "User (" << user << ")  -  Computer (" << comp << ")\n\n" << endl;
 	for(int i=0; i<10; i++){
 		if(i==0 || i==3 || i==6 || i==9)
 			cout << "     |     |     " << endl;

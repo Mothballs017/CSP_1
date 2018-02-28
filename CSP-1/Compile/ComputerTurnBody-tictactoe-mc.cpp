@@ -23,6 +23,7 @@ void ComputerTurn(){
 		move=Available(num, comp);
 		if(move==false)
 			continue;
-		notValid=true;
+		else
+			notValid=true;
 	}
 }
