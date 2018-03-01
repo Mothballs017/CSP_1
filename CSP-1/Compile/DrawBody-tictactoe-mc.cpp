@@ -14,8 +14,8 @@ using namespace std;
 
 void Draw(){
 	cout << left << "User (" << user << ")  -  Computer (" << comp << ")\n\n" << endl;
-	for(int i=0; i<10; i++){
-		if(i==0 || i==3 || i==6 || i==9)
+	for(int i=0; i<9; i++){
+		if(i==0 || i==3 || i==6 || i==8)
 			cout << "     |     |     " << endl;
 		if(i==1)
 			cout << "  " << pos1 << "  |  " << pos2 << "  |  " << pos3 << "  " << endl;
