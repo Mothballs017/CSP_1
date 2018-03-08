@@ -8,6 +8,16 @@
 
 #include <iostream>
 #include <iomanip>
+#include <stdlib.h>
+#include <ctime>
+#include "GlobalVar-tictactoe-mc.h"
+#include "Draw-tictactoe-mc.h"
+#include "Available-tictactoe-mc.h"
+#include "InputCheck-tictactoe-mc.h"
+#include "ComputerTurn-tictactoe-mc.h"
+#include "CheckWinner-tictactoe-mc.h"
+#include "Marker-tictactoe-mc.h"
+#include "First-tictactoe-mc.h"
 //#include "" name of header file
 
 using namespace std;
@@ -24,134 +34,34 @@ char pos9='9';
 char user='X';
 char comp='O';
 int position;
-
-void Draw(){
-	cout << "\n\n" << right << setw(16) << "Tic Tac Toe\n" << endl;
-	cout << left << "User (X)  -  Computer (O)\n\n" << endl; // user char var and comp char var
-	for(int i=0; i<10; i++){
-		if(i==0 || i==3 || i==6 || i==9)
-			cout << "     |     |     " << endl;
-		if(i==1)
-			cout << "  " << pos1 << "  |  " << pos2 << "  |  " << pos3 << "  " << endl;
-		if(i==4)
-			cout << "  " << pos4 << "  |  " << pos5 << "  |  " << pos6 << "  " << endl;
-		if(i==7)
-			cout << "  " << pos7 << "  |  " << pos8 << "  |  " << pos9 << "  " << endl;
-		if(i==2 || i==5)
-			cout << "_____|_____|_____" << endl;
-	}
-}
-
-void InputCheck(){
-	bool notValid=false;
-	while(notValid!=true){
-		cout << "Enter your position: ";
-		cin >> position;
-		if(position<1||position>9){
-			cout << "Invalid input: the position indicator has to be in the range of 1 to 9" << endl;
-			continue;
-		}
-		else
-			notValid=true;
-	}
-}
-
-void Available(){
-	//add if statement to determine which letter is entered for which player and letter for opposing player
-	bool isAvailable=false;
-	while(isAvailable!=true){
-		if(position==1){
-			if(pos1==user || pos1==comp)
-				cout << "Invalid input: position already occupied." << endl;
-			else{
-				pos1='X';
-				isAvailable=true;
-			}
-		}
-		if(position==2){
-			if(pos2==user || pos2==comp)
-				cout << "Invalid input: position already occupied." << endl;
-			else{
-				pos2='X';
-				isAvailable=true;
-			}
-		}
-		if(position==3){
-			if(pos3==user || pos3==comp)
-				cout << "Invalid input: position already occupied." << endl;
-			else{
-				pos3='X';
-				isAvailable=true;
-			}
-		}
-		if(position==4){
-			if(pos4==user || pos4==comp)
-				cout << "Invalid input: position already occupied." << endl;
-			else{
-				pos4='X';
-				isAvailable=true;
-			}
-		}
-		if(position==5){
-			if(pos5==user || pos5==comp)
-				cout << "Invalid input: position already occupied." << endl;
-			else{
-				pos5='X';
-				isAvailable=true;
-			}
-		}
-		if(position==6){
-			if(pos6==user || pos6==comp)
-				cout << "Invalid input: position already occupied." << endl;
-			else{
-				pos6='X';
-				isAvailable=true;
-			}
-		}
-		if(position==7){
-			if(pos7==user || pos7==comp)
-				cout << "Invalid input: position already occupied." << endl;
-			else{
-				pos7='X';
-				isAvailable=true;
-			}
-		}
-		if(position==8){
-			if(pos8==user || pos8==comp)
-				cout << "Invalid input: position already occupied." << endl;
-			else{
-				pos8='X';
-				isAvailable=true;
-			}
-		}
-		if(position==9){
-			if(pos9==user || pos9==comp)
-				cout << "Invalid input: position already occupied." << endl;
-			else{
-				pos9='X';
-				isAvailable=true;
-			}
-		}
-	}
-}
-
-bool CheckWinner(){
-	if(pos1==pos2 && pos2==pos3 && pos3==pos1){
-
-	}
-}
+char winner;
+bool gameOver=false;
 
 int main(){
 	cout << "Welcome to the game of Tic Tac Toe."
-			"\nBelow you will indicate your position (1-9) as shown in the table." << endl;
+			"\nBelow you will indicate your position (1-9) as shown in the table.\n" << endl;
+	Marker();
+	First();
+	cout << "\n\n" << right << setw(16) << "Tic Tac Toe\n" << endl;
 	Draw();
-	//while loop gameover!=true
-//	InputCheck();
-//	Available();
-	//gameOver=CheckWinner
+	do{
+		InputCheck();
+		gameOver=CheckWinner();
+		if(gameOver==true)
+			break;
+		ComputerTurn();
+		Draw();
+		gameOver=CheckWinner();
+	}while(gameOver!=true);
+	if(winner==user){
+		Draw();
+		cout << "Player 1 wins the game!" << endl;
+	}
+	if(winner==comp)
+		cout << "Computer wins the game!" << endl;
+	if(winner=='t'){
+		Draw();
+		cout << "Draw" << endl;
+	}
 	return (0);
 }
-
-
-
-
