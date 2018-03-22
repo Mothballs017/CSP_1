@@ -48,6 +48,7 @@ int Max_Value_In_Array(int data[], int& local)
 			local = i;
 		}
 	}
+//	data[2]=999;
 	return (min);
 }
 /***************************************************************/
