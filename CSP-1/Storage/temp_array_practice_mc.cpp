@@ -25,6 +25,7 @@ int main(){
 		sum+=num;
 		cout << num << endl;
 	}
-	cout << "Sum = " << sum/LENGTH << endl;
+	cout << "Average = " << sum/LENGTH << endl;
 	return (0);
 }
+/*********************************************************************************/

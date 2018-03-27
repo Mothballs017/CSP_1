@@ -18,7 +18,7 @@ int main(){
 	float current[VAL], power[VAL];
 	float Rsum=0,Csum=0,Psum=0;
 	for(int i=0; i<VAL; i++){
-		cout << "Please enter a value for current";
+		cout << "Please enter a value for current: ";
 		cin >> current[i];
 		power[i]=resistance[i]*pow(current[i],2);
 	}
@@ -32,3 +32,4 @@ int main(){
 	cout << "Total: " << Rsum << "   | " << Csum << "          | " << Psum << endl;
 	return (0);
 }
+/*********************************************************************************/
