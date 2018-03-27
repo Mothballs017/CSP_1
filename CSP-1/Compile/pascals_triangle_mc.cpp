@@ -3,7 +3,7 @@
 /*** Course: Computational Problem Solving CPET-121							   ***/
 /*** Developer: Matthew Chu													   ***/
 /*** Data: March 27, 2018                                                      ***/
-/*** Description: Finding Max Value in 2D Array					               ***/
+/*** Description: Pascals Triangle Using 2D Arrays				               ***/
 /*********************************************************************************/
 
 #include <iostream>
@@ -40,3 +40,4 @@ int main(){
 	cout << "\nA committee of 8 can be selected from a group of 10 people " << triangle[10][8] << " times.";
 	return 0;
 }
+/*********************************************************************************/
