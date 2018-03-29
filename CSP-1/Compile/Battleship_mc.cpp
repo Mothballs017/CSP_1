@@ -8,7 +8,7 @@
 
 #include <iostream>
 #include <iomanip>
-#include <stdio.h>
+#include <stdlib.h>
 #include <ctime>
 
 using namespace std;
@@ -21,7 +21,7 @@ using namespace std;
 
 char pocean[7][7];
 char docean[7][7];
-int d1,d2,s1,s2,b1,b2;
+int destroyer=2,submarine=3,battleship=4;
 
 void Draw(){
 	char y[7]={'A','B','C','D','E','F','G'};
@@ -41,10 +41,89 @@ void Draw(){
 	}
 }
 
-void PlaceShip(){
+void PlaceShip(int ship){
 	srand(time(NULL));
-	while()
+
+//	cout << "working" << endl;
+//	srand(time(NULL));
+//	bool empty=true;
+//	int direction=rand()*4;
+//	while(empty!=false){
+//		cout << "loop";
+//		int row=rand()*7; int col=rand()*7;
+//		char spot=docean[row][col];
+//		if(spot=='H')
+//			continue;
+//		if(spot=='M'){
+//			cout << "M";
+//			if(direction==0){
+//				if(row==0)
+//					continue;
+//				int clear=0;
+//				for(int i=row;i>row-ship;i--){
+//					if(docean[i][col]=='H')
+//						clear=1;
+//				}
+//				if(clear==0)
+//					for(int i=row;i>row-ship;i--){
+//						docean[i][col]='H';
+//						empty=false;
+//					}
+//				else if(clear==1)
+//					direction=rand()*4;
+//			}
+//			if(direction==1){
+//				if(col==6)
+//					continue;
+//				int clear=0;
+//				for(int i=col;i<col+ship;i++){
+//					if(docean[row][i]=='H')
+//						clear=1;
+//				}
+//				if(clear==0)
+//					for(int i=col;i<col+ship;i++){
+//						docean[row][i]='H';
+//						empty=false;
+//					}
+//				else if(clear==1)
+//					direction=rand()*4;
+//			}
+//			if(direction==2){
+//				if(row==6)
+//					continue;
+//				int clear=0;
+//				for(int i=row;i<row+ship;i++){
+//					if(docean[row][i]=='H')
+//						clear=1;
+//				}
+//				if(clear==0)
+//					for(int i=row;i<row+ship;i++){
+//						docean[row][i]='H';
+//						empty=false;
+//					}
+//				else if(clear==1)
+//					direction=rand()*4;
+//			}
+//			if(direction==3){
+//				if(col==0)
+//					continue;
+//				int clear=0;
+//				for(int i=col;i>col-ship;i--){
+//					if(docean[row][i]=='H')
+//						clear=1;
+//				}
+//				if(clear==0)
+//					for(int i=col;i>col-ship;i--){
+//						docean[row][i]='H';
+//						empty=false;
+//					}
+//				else if(clear==1)
+//					direction=rand()*4;
+//			}
+//		}
+//	}
 }
+
 
 int main(){
 	for(int i=0;i<7;i++)
@@ -53,6 +132,13 @@ int main(){
 			pocean[i][k]='M';
 		}
 	Draw();
-	PlaceShip();
+	PlaceShip(destroyer);
+	PlaceShip(submarine);
+	PlaceShip(battleship);
+	for(int i=0;i<7;i++)
+		for(int k=0;k<7;k++){
+			docean[i][k]=pocean[i][k];
+		}
+	Draw();
 	return 0;
 }
