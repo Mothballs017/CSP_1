@@ -19,8 +19,9 @@ using namespace std;
  * Battleship: 4 pos
  */
 
-char pocean[7][7];
-char docean[7][7];
+char ocean[7][7]; //display ocean
+int shiplog[7][7]; //log of finished hits
+int guesscount=0;
 int destroyer=2,submarine=3,battleship=4;
 
 void Draw(){
@@ -33,7 +34,7 @@ void Draw(){
 		if(i%2==1){
 			cout << y[letter] << " | ";
 			for(int m=0;m<7;m++){
-				cout << docean[letter][m] << " | ";
+				cout << ocean[letter][m] << " | ";
 			}
 			cout << "\n";
 			letter++;
@@ -42,103 +43,154 @@ void Draw(){
 }
 
 void PlaceShip(int ship){
-	srand(time(NULL));
-
-//	cout << "working" << endl;
-//	srand(time(NULL));
-//	bool empty=true;
-//	int direction=rand()*4;
-//	while(empty!=false){
-//		cout << "loop";
-//		int row=rand()*7; int col=rand()*7;
-//		char spot=docean[row][col];
-//		if(spot=='H')
-//			continue;
-//		if(spot=='M'){
-//			cout << "M";
-//			if(direction==0){
-//				if(row==0)
-//					continue;
-//				int clear=0;
-//				for(int i=row;i>row-ship;i--){
-//					if(docean[i][col]=='H')
-//						clear=1;
-//				}
-//				if(clear==0)
-//					for(int i=row;i>row-ship;i--){
-//						docean[i][col]='H';
-//						empty=false;
-//					}
-//				else if(clear==1)
-//					direction=rand()*4;
-//			}
-//			if(direction==1){
-//				if(col==6)
-//					continue;
-//				int clear=0;
-//				for(int i=col;i<col+ship;i++){
-//					if(docean[row][i]=='H')
-//						clear=1;
-//				}
-//				if(clear==0)
-//					for(int i=col;i<col+ship;i++){
-//						docean[row][i]='H';
-//						empty=false;
-//					}
-//				else if(clear==1)
-//					direction=rand()*4;
-//			}
-//			if(direction==2){
-//				if(row==6)
-//					continue;
-//				int clear=0;
-//				for(int i=row;i<row+ship;i++){
-//					if(docean[row][i]=='H')
-//						clear=1;
-//				}
-//				if(clear==0)
-//					for(int i=row;i<row+ship;i++){
-//						docean[row][i]='H';
-//						empty=false;
-//					}
-//				else if(clear==1)
-//					direction=rand()*4;
-//			}
-//			if(direction==3){
-//				if(col==0)
-//					continue;
-//				int clear=0;
-//				for(int i=col;i>col-ship;i--){
-//					if(docean[row][i]=='H')
-//						clear=1;
-//				}
-//				if(clear==0)
-//					for(int i=col;i>col-ship;i--){
-//						docean[row][i]='H';
-//						empty=false;
-//					}
-//				else if(clear==1)
-//					direction=rand()*4;
-//			}
-//		}
-//	}
+	//random location - done
+	//check occupied - done
+	//check direction (up/down)
+	//check overlap
+	bool placed=false;
+	while(placed!=true){
+		srand(time(NULL));
+		//chose a spot
+		int shipx=(rand()%(7-ship))+ship;
+		int shipy=(rand()%(7-ship))+ship;
+		//makes sure it isnt occupied
+		do{
+			shipx=(rand()%(7-ship))+ship;
+			shipy=(rand()%(7-ship))+ship;
+		}while(shiplog[shipy][shipx]!=0);
+		//pick direction
+		int direction=rand()%2; //0 is up, 1 is left
+		//if direction is up/0, then checks occupied
+		for(int i=shipy;i>shipy-ship;i--)
+			if(shiplog[i][shipx]!=0)
+				direction=2;
+		//if occupied, repeat loop
+		if(direction==2)
+			continue;
+		//if empty, place ship
+		if(direction==0){
+			for(int i=shipy;i>shipy-ship;i--)
+				shiplog[i][shipx]=ship;
+			break;
+		}
+		//if direction is down/1, then checks occupied
+		for(int i=shipx;i>shipx-ship;i--)
+			if(shiplog[shipy][i]!=0)
+				direction=2;
+		//if occupied, repeat loop
+		if(direction==2)
+			continue;
+		//if empty, place ship
+		if(direction==1){
+			for(int i=shipx;i>shipx-ship;i--)
+				shiplog[shipy][i]=ship;
+			break;
+		}
+	}
 }
 
+void Shoot(){
+	int col, rownum;
+	char row, letter[7]={'A','B','C','D','E','F','G'};
+	bool valid=false;
+	do{
+		int sank=0;
+		cout << "Enter Your Guess (C [1-7] / R [A-G]) : ";
+		cin >> col >> row;
+		guesscount++;
+		if((col<=7 && col>=1) && (row=='A' || row=='B' || row=='C'
+				|| row=='D' || row=='E' || row=='F' || row=='G')){
+			col-=1;
+			for(int i=0;i<7;i++)
+				if(letter[i]==row)
+					rownum=i;
+			cout << "********************************\n";
+			if(shiplog[rownum][col]>1){
+				cout << "**           HIT              **\n";
+				if(shiplog[rownum][col]==destroyer){
+					shiplog[rownum][col]=1;
+					ocean[rownum][col]='H';
+					for(int i=0;i<7;i++)
+						for(int k=0;k<7;k++)
+							if(shiplog[i][k]==destroyer)
+								sank=1;
+					if(sank==0)
+						cout << "**   YOU SANK MY DESTROYER    **\n";
+
+				}
+				if(shiplog[rownum][col]==submarine){
+					shiplog[rownum][col]=1;
+					ocean[rownum][col]='H';
+					for(int i=0;i<7;i++)
+						for(int k=0;k<7;k++)
+							if(shiplog[i][k]==submarine)
+								sank=1;
+					if(sank==0)
+						cout << "**   YOU SANK MY SUBMARINE    **\n";
+				}
+				if(shiplog[rownum][col]==battleship){
+					shiplog[rownum][col]=1;
+					ocean[rownum][col]='H';
+					for(int i=0;i<7;i++)
+						for(int k=0;k<7;k++)
+							if(shiplog[i][k]==battleship)
+								sank=1;
+					if(sank==0)
+						cout << "**   YOU SANK MY BATTLESHIP   **\n";
+				}
+				cout << "********************************\n"
+						"Press any key to continue . . .\n\n";
+				valid=true;
+			}
+			else{
+				if(shiplog[rownum][col]==1)
+					cout << "**        ALREADY GUESSED     **\n";
+				if(shiplog[rownum][col]==0){
+					ocean[rownum][col]='M';
+					shiplog[rownum][col]=1;
+					cout << "**           MISS             **\n";
+				}
+				cout <<	"********************************\n"
+					"Press any key to continue . . .\n\n";
+				valid=true;
+			}
+		}
+		else{
+			cout << "Format Error... Please Reenter\nPress any key to continue . . .";
+			continue;
+		}
+	}while(valid!=true);
+}
+
+bool GameOver(){
+	for(int i=0;i<7;i++)
+		for(int k=0;k<7;k++)
+			if(shiplog[i][k]>1)
+				return false;
+	return true;
+}
 
 int main(){
+	bool game=true;
 	for(int i=0;i<7;i++)
 		for(int k=0;k<7;k++){
-			docean[i][k]=' ';
-			pocean[i][k]='M';
+			ocean[i][k]=' ';
+			shiplog[i][k]=0;
 		}
 	Draw();
 	PlaceShip(destroyer);
 	PlaceShip(submarine);
 	PlaceShip(battleship);
-	for(int i=0;i<7;i++)
-		for(int k=0;k<7;k++){
-			docean[i][k]=pocean[i][k];
-		}
-	Draw();
+	while(game!=GameOver()){
+		Shoot();
+		Draw();
+	}
+	cout << setw(32) <<
+			"********************************\n"
+			"** GAME OVER                  **\n"
+			"** GUESS COUNT       = " << guesscount << "     **\n"
+			"** GUESS EFFICIENCY = " << setprecision(3) << 9.0/guesscount * 100.0 << "%   **\n"
+			"********************************\n"
+			"Press any key to continue . . .\n\n";
 	return 0;
 }
