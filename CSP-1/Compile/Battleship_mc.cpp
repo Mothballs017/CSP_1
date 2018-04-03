@@ -20,6 +20,7 @@ using namespace std;
  */
 
 char ocean[7][7]; //display ocean
+char print[7][7];
 int shiplog[7][7]; //log of finished hits
 int guesscount=0;
 int destroyer=2,submarine=3,battleship=4;
@@ -34,7 +35,7 @@ void Draw(){
 		if(i%2==1){
 			cout << y[letter] << " | ";
 			for(int m=0;m<7;m++){
-				cout << ocean[letter][m] << " | ";
+				cout << ocean[letter][m] << " | ";     //
 			}
 			cout << "\n";
 			letter++;
@@ -71,6 +72,7 @@ void PlaceShip(int ship){
 		if(direction==0){
 			for(int i=shipy;i>shipy-ship;i--)
 				shiplog[i][shipx]=ship;
+//				print[i][shipx]='H';
 			break;
 		}
 		//if direction is down/1, then checks occupied
@@ -84,6 +86,7 @@ void PlaceShip(int ship){
 		if(direction==1){
 			for(int i=shipx;i>shipx-ship;i--)
 				shiplog[shipy][i]=ship;
+//				print[shipy][i]='H';
 			break;
 		}
 	}
@@ -98,8 +101,9 @@ void Shoot(){
 		cout << "Enter Your Guess (C [1-7] / R [A-G]) : ";
 		cin >> col >> row;
 		guesscount++;
-		if((col<=7 && col>=1) && (row=='A' || row=='B' || row=='C'
-				|| row=='D' || row=='E' || row=='F' || row=='G')){
+		if((col<=7 && col>=1) && (row=='A' || row=='a' || row=='B' || row=='b' ||
+				row=='C' || row=='c' || row=='D' || row=='d' || row=='E' || row=='e' ||
+				row=='F' || row=='f' || row=='G' || row=='g')){
 			col-=1;
 			for(int i=0;i<7;i++)
 				if(letter[i]==row)
@@ -175,12 +179,14 @@ int main(){
 	for(int i=0;i<7;i++)
 		for(int k=0;k<7;k++){
 			ocean[i][k]=' ';
+			print[i][k]='M';
 			shiplog[i][k]=0;
 		}
 	Draw();
 	PlaceShip(destroyer);
 	PlaceShip(submarine);
 	PlaceShip(battleship);
+//	Draw();
 	while(game!=GameOver()){
 		Shoot();
 		Draw();
