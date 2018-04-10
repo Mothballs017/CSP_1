@@ -18,9 +18,9 @@ using namespace std;
 
 int main(void)
 {
-	int nums[18], tsum=0;
+	int nums[18];
 	ifstream inFile;
-	inFile.open("polar.dat");
+	inFile.open("numbers.dat");
 	if(inFile.fail())
 		exit(1);
 	for(int i=0;i<18;i++){
@@ -29,10 +29,11 @@ int main(void)
 	for(int i=0;i<18;i++){
 		if(nums[i]<10){
 			int sum=0;
-			for(int k=i; k<nums[i];k++)
+			for(int k=i+1; k<nums[i]+i+1;k++)
 				sum+=nums[k];
 			cout << "Average of group " << nums[i] << " = " << sum/nums[i] << endl;
 		}
 	}
+	inFile.close();
 	return 0;
 }
