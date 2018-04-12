@@ -37,15 +37,19 @@ int main(void)
 	cout << "distance, angle: ";
 	cin >> distance >> angle;
 	outFile << fixed << setprecision(1) << distance << " " << angle << endl;
+	inFile.close();
 	outFile.close();
-	for(int i=0;i<6;i++){
+	inFile.open("polar.dat");
+	if(inFile.fail())
+		exit(1);;
+	for(int i=0;i<7;i++){
 		inFile >> dist[i] >> ang[i];
 	}
 	outFile.open("xycord.dat");
 	if(outFile.fail())
 		exit(1);
 	inFile.close();
-	for(int i=0;i<6;i++){
+	for(int i=0;i<7;i++){
 		x=dist[i]*cos(M_PI/180.0);
 		y=dist[i]*sin(M_PI/180.0);
 		outFile << fixed << setprecision(1) << x << " " << y << endl;
