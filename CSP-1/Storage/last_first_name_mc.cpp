@@ -32,6 +32,7 @@ int main(void)
 		names[i][1]=last;
 
 	}
+
 	for(int i=0;i<5;i++){
 		cout << names[i][1] << ", " << names[i][0] << endl;
 	}
