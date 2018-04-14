@@ -28,13 +28,13 @@ int main(void)
 		getline(cin, first);
 		cout << "Enter a last name: \n";
 		getline(cin, last);
-		cout << last << ", " << first << endl;
 		names[i][0]=first;
 		names[i][1]=last;
+
+	}
+	for(int i=0;i<5;i++){
+		cout << names[i][1] << ", " << names[i][0] << endl;
 	}
 	return 0;
 }
-
-
-
-
+/*********************************************************************************/

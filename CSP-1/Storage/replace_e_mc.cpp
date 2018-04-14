@@ -25,10 +25,11 @@ int main(void)
 	for(int i=0;i<ssize;i++){
 		tmp = sentence.at(i);
 		if(tmp=='e')
-			sentence.replace(i,i,"x");
+			sentence.replace(i,1,"x");
 		if(tmp=='E')
-			sentence.replace(i,i,"X");
+			sentence.replace(i,1,"X");
 	}
-
+	cout << sentence << endl;
 	return 0;
 }
+/*********************************************************************************/
