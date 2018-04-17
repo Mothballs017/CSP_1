@@ -18,9 +18,11 @@ using namespace std;
 
 int main(void)
 {
-	int miles[7]={15,22,16.18,27,23,20}, int dist[7];
+	int miles[7]={15,22,16,18,27,23,20}, dist[7];
 	for(int i=0;i<7;i++){
-		dist[i]
+		*(dist+i)=*(miles+i);
+		cout << *(dist+i) << endl;
 	}
 	return 0;
 }
+/*********************************************************************************/
