@@ -1,13 +1,14 @@
 /*********************************************************************************/
-/*** Title: shipped_report_mc.cpp											   ***/
+/*** Title: miles_to_data_mc.cpp											   ***/
 /*** Course: Computational Problem Solving CPET-121							   ***/
 /*** Developer: Matthew Chu													   ***/
-/*** Data: April 12, 2018                                                      ***/
-/*** Description: Read dat File and Produce Report							   ***/
+/*** Data: April 17, 2018                                                      ***/
+/*** Description: Using Pointers to Manipulate Arrays                          ***/
 /*********************************************************************************/
 
 #include <iostream>
 #include <fstream>
+
 #include <stdlib.h>
 #include <cmath>
 #include <iomanip>
@@ -17,13 +18,9 @@ using namespace std;
 
 int main(void)
 {
-	ifstream inFile;
-	inFile.open("shipped.dat");
-	string report[5][6], line[5];
-	for(int i=0;i<5;i++){
-		getline(inFile,line[i]);
-		line[i].erase(9,10);
-		cout << line[i] << endl;
+	int miles[7]={15,22,16.18,27,23,20}, int dist[7];
+	for(int i=0;i<7;i++){
+		dist[i]
 	}
 	return 0;
 }
